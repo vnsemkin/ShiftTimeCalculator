@@ -41,7 +41,7 @@ public class ShiftTimeCorrectionQuestion implements RespHandlerInterface {
     private InlineKeyboardMarkup sendKeyboard() {
         List<String> buttons = List.of(BotConstants.CORRECT_SHIFT_START
                 , BotConstants.CORRECT_SHIFT_STOP
-                , BotConstants.APPLY_CORRECTION);
+                , BotConstants.CONTINUE);
         return BotKeyboardFactory.getInlineKeyboard(buttons, true);
     }
 }

@@ -3,10 +3,7 @@ package com.example.shifttimecalculator.service.answer_resolver;
 
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
-import com.example.shifttimecalculator.service.answer_as_callback.CallBackPersonResolver;
-import com.example.shifttimecalculator.service.answer_as_callback.CallBackSectorResolver;
-import com.example.shifttimecalculator.service.answer_as_callback.CallBackShiftResolver;
-import com.example.shifttimecalculator.service.answer_as_callback.CallBackShiftTimeResolver;
+import com.example.shifttimecalculator.service.answer_as_callback.*;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +13,18 @@ public class CallBackResolver implements RespHandlerInterface {
     private final CallBackSectorResolver sectorResolver;
     private final CallBackPersonResolver personResolver;
     private final CallBackShiftTimeResolver callBackShiftTimeResolver;
+    private final CallBackStrategyResolver callBackStrategyResolver;
 
-    public CallBackResolver(CallBackShiftResolver shiftResolver, CallBackSectorResolver sectorResolver, CallBackPersonResolver personResolver, CallBackShiftTimeResolver callBackShiftTimeResolver) {
+    public CallBackResolver(CallBackShiftResolver shiftResolver
+            , CallBackSectorResolver sectorResolver
+            , CallBackPersonResolver personResolver
+            , CallBackShiftTimeResolver callBackShiftTimeResolver
+            , CallBackStrategyResolver callBackStrategyResolver) {
         this.shiftResolver = shiftResolver;
         this.sectorResolver = sectorResolver;
         this.personResolver = personResolver;
         this.callBackShiftTimeResolver = callBackShiftTimeResolver;
+        this.callBackStrategyResolver = callBackStrategyResolver;
     }
 
     public void handleRequest(Update update, Conversation conversation) {
@@ -32,8 +35,8 @@ public class CallBackResolver implements RespHandlerInterface {
             case 2 -> this.callBackShiftTimeResolver.handleRequest(update, conversation);
             case 3 -> this.sectorResolver.handleRequest(update, conversation);
             case 4 -> this.personResolver.handleRequest(update, conversation);
+            case 5 -> this.callBackStrategyResolver.handleRequest(update,conversation);
         }
-
     }
 }
 

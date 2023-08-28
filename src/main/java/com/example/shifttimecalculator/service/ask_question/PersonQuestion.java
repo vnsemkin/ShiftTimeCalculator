@@ -48,7 +48,7 @@ public class PersonQuestion implements RespHandlerInterface {
                 .findBySectors_Name(sector)
                 .stream()
                 .map((p) -> p.getName() + " " + p.getSurname()).toList());
-        buttons.add(BotConstants.GET_TIMETABLE);
+        buttons.add(BotConstants.CONTINUE);
         return BotKeyboardFactory.getInlineKeyboard(buttons, true);
     }
 

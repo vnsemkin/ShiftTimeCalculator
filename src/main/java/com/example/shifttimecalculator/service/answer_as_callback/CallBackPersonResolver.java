@@ -2,12 +2,12 @@ package com.example.shifttimecalculator.service.answer_as_callback;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
-import com.example.shifttimecalculator.dto.PersonDTO;
 import com.example.shifttimecalculator.entity.Person;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.repository.PersonRepo;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
 import com.example.shifttimecalculator.service.ask_question.PersonQuestion;
+import com.example.shifttimecalculator.service.ask_question.StrategyQuestion;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -18,40 +18,40 @@ import java.util.Set;
 
 @Service
 public class CallBackPersonResolver implements RespHandlerInterface {
-    private final MessageSender sender;
     private final PersonRepo personRepo;
-    private final Set<PersonDTO> personDTOSet;
+    private final StrategyQuestion strategyQuestion;
     private final Set<Person> personSet;
     private final PersonQuestion personQuestion;
-    private final CallBackGetTimetable callBackGetTimetable;
+    private final MessageSender sender;
 
-    public CallBackPersonResolver(MessageSender sender
+    public CallBackPersonResolver(StrategyQuestion strategyQuestion
             , PersonRepo personRepo
-            , PersonQuestion personQuestion
-            , CallBackGetTimetable callBackGetTimetable) {
-        this.sender = sender;
+            , PersonQuestion personQuestion, MessageSender sender) {
         this.personRepo = personRepo;
+        this.strategyQuestion = strategyQuestion;
         this.personQuestion = personQuestion;
-        this.callBackGetTimetable = callBackGetTimetable;
+        this.sender = sender;
         this.personSet = new HashSet<>();
-        this.personDTOSet = new HashSet<>();
     }
 
     @Override
     public void handleRequest(Update update, Conversation conversation) {
         String data = update.getCallbackQuery().getData();
-        if (!Objects.equals(data, BotConstants.GET_TIMETABLE)) {
+        if (!Objects.equals(data, BotConstants.CONTINUE)) {
             Person person = this.getPersonFromString(data);
-            PersonDTO personDTO = new PersonDTO(person);
-            this.personDTOSet.add(personDTO);
             this.personSet.add(person);
             //Add persons to PersonsList in Conversation
             conversation.setPersonList(this.personSet.stream().toList());
             this.personQuestion.handleRequest(update, conversation);
         } else {
-            this.callBackGetTimetable.handleRequest(update, conversation);
+            if (Objects.isNull(conversation.getPersonList()) || conversation.getPersonList().size() < 2) {
+                Long chatId = update.getCallbackQuery().getMessage().getChatId();
+                sender.sendTextMessage(chatId, BotConstants.NOT_ENOUGH_WORKERS);
+                this.personQuestion.handleRequest(update, conversation);
+            } else {
+                this.strategyQuestion.handleRequest(update, conversation);
+            }
         }
-
     }
 
     private Person getPersonFromString(String data) {

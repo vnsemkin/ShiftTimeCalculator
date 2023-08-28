@@ -10,6 +10,8 @@ import com.example.shifttimecalculator.service.calculation.StopShiftCorrection;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.util.Objects;
+
 @Service
 public class ReplyResolver implements RespHandlerInterface {
     private final StartConversation startConversation;
@@ -27,13 +29,18 @@ public class ReplyResolver implements RespHandlerInterface {
     }
 
     public void handleRequest(Update update, Conversation conversation) {
-        String answer = conversation.getAnswer();
-        switch (answer) {
-            case (BotConstants.CORRECT_SHIFT_START) -> this.replyToCorrectStartShiftTime.getCorrectStartShiftTime(update
-                    , conversation);
-            case (BotConstants.CORRECT_SHIFT_STOP) -> this.replyToCorrectStopTime
-                    .getStopShiftCorrection(update, conversation);
-            default -> this.startConversation.startConversation(update, conversation);
+        if (Objects.nonNull(conversation.getAnswer())) {
+            String answer = conversation.getAnswer();
+            switch (answer) {
+                case (BotConstants.CORRECT_SHIFT_START) ->
+                        this.replyToCorrectStartShiftTime.getCorrectStartShiftTime(update
+                                , conversation);
+                case (BotConstants.CORRECT_SHIFT_STOP) -> this.replyToCorrectStopTime
+                        .getStopShiftCorrection(update, conversation);
+                default -> this.startConversation.startConversation(update, conversation);
+            }
+        }else {
+            this.startConversation.startConversation(update, conversation);
         }
     }
 }

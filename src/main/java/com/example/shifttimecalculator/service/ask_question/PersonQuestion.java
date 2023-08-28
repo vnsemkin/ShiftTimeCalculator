@@ -37,13 +37,6 @@ public class PersonQuestion implements RespHandlerInterface {
         SendMessage sm = new SendMessage();
         this.sender.sendTextMessage(chatId
                 , new ConversationDTO(conversation).getShiftInfo());
-        //Display personsList
-//        if(Objects.nonNull(conversation.getPersonList())) {
-//            this.sender.sendTextMessage(chatId, "<b>Список работников: </b>");
-//            String personList = conversation.getPersonList().stream().map(p -> p.getName()
-//                    + " " + p.getSurname()).collect(Collectors.joining(" , "));
-//            this.sender.sendTextMessage(chatId, personList);
-//        }
         sm.setChatId(message.getChatId());
         sm.setText(BotConstants.ADD_CONTROLLER);
         sm.setReplyMarkup(this.sendKeyboard(sectorName));

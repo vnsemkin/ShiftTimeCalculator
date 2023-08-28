@@ -15,7 +15,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class CallBackPersonResolver implements RespHandlerInterface {
@@ -41,19 +40,13 @@ public class CallBackPersonResolver implements RespHandlerInterface {
     @Override
     public void handleRequest(Update update, Conversation conversation) {
         String data = update.getCallbackQuery().getData();
-        Long chatId = update.getCallbackQuery().getMessage().getChatId();
         if (!Objects.equals(data, BotConstants.GET_TIMETABLE)) {
             Person person = this.getPersonFromString(data);
             PersonDTO personDTO = new PersonDTO(person);
             this.personDTOSet.add(personDTO);
             this.personSet.add(person);
-            String concatenatedNames = this.personSet.stream().map((p) -> p.getName()
-                            + " "
-                            + p.getSurname())
-                    .collect(Collectors.joining(" , "));
+            //Add persons to PersonsList in Conversation
             conversation.setPersonList(this.personSet.stream().toList());
-            this.sender.sendTextMessage(chatId, "<b>Список работников: </b>");
-            this.sender.sendTextMessage(chatId, concatenatedNames);
             this.personQuestion.handleRequest(update, conversation);
         } else {
             this.callBackGetTimetable.handleRequest(update, conversation);

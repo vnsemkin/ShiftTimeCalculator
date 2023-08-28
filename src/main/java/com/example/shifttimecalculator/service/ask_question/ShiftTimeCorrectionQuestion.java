@@ -2,7 +2,7 @@ package com.example.shifttimecalculator.service.ask_question;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
-import com.example.shifttimecalculator.dto.ShiftDTO;
+import com.example.shifttimecalculator.dto.ConversationDTO;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
 import com.example.shifttimecalculator.util.BotKeyboardFactory;
@@ -31,10 +31,10 @@ public class ShiftTimeCorrectionQuestion implements RespHandlerInterface {
                 .getChatId();
         SendMessage sm = new SendMessage();
         sm.setChatId(chatId);
-        sm.setText(BotConstants.LINE);
+        sm.setText(BotConstants.CORRECT_TIME);
         sm.setReplyMarkup(this.sendKeyboard());
-        ShiftDTO shiftDTO = new ShiftDTO(conversation.getShift());
-        this.sender.sendTextMessage(chatId, shiftDTO.toString());
+        this.sender.sendTextMessage(chatId
+                , new ConversationDTO(conversation).getShiftInfo());
         this.sender.sendMessage(sm);
     }
 

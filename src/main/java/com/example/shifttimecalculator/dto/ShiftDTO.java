@@ -29,6 +29,7 @@ public class ShiftDTO {
         String formattedStopTime = this.stop.format(timeFormatter);
         String formattedStopDate = this.stop.format(dateFormatter);
         return "<b>Смена: </b>"
+                + "\n"
                 + this.name
                 + "\n<b>Начало смены: </b>"
                 + "\n" + formattedStartTime

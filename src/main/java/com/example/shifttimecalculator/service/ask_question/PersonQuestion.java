@@ -2,8 +2,7 @@ package com.example.shifttimecalculator.service.ask_question;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
-import com.example.shifttimecalculator.dto.SectorDTO;
-import com.example.shifttimecalculator.dto.ShiftDTO;
+import com.example.shifttimecalculator.dto.ConversationDTO;
 import com.example.shifttimecalculator.entity.Sector;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.repository.PersonRepo;
@@ -36,10 +35,15 @@ public class PersonQuestion implements RespHandlerInterface {
         Message message = update.getCallbackQuery().getMessage();
         Long chatId = update.getCallbackQuery().getMessage().getChatId();
         SendMessage sm = new SendMessage();
-        ShiftDTO shiftDTO = new ShiftDTO(conversation.getShift());
-        SectorDTO sectorDTO = new SectorDTO(conversation.getSector());
-        this.sender.sendTextMessage(chatId, shiftDTO.toString());
-        this.sender.sendTextMessage(chatId, sectorDTO.toString());
+        this.sender.sendTextMessage(chatId
+                , new ConversationDTO(conversation).getShiftInfo());
+        //Display personsList
+//        if(Objects.nonNull(conversation.getPersonList())) {
+//            this.sender.sendTextMessage(chatId, "<b>Список работников: </b>");
+//            String personList = conversation.getPersonList().stream().map(p -> p.getName()
+//                    + " " + p.getSurname()).collect(Collectors.joining(" , "));
+//            this.sender.sendTextMessage(chatId, personList);
+//        }
         sm.setChatId(message.getChatId());
         sm.setText(BotConstants.ADD_CONTROLLER);
         sm.setReplyMarkup(this.sendKeyboard(sectorName));

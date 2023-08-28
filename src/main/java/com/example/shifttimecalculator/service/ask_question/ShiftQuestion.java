@@ -1,6 +1,7 @@
 package com.example.shifttimecalculator.service.ask_question;
 
 
+import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.entity.Shift;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.repository.ShiftRepo;
@@ -30,7 +31,7 @@ public class ShiftQuestion implements RespHandlerInterface {
         Message message = update.getMessage();
         SendMessage sm = new SendMessage();
         sm.setChatId(message.getChatId());
-        sm.setText("<b>Выберите смену: </b>");
+        sm.setText(BotConstants.CHOOSE_SHIFT);
         sm.setReplyMarkup(this.sendKeyboard());
         this.sender.sendMessage(sm);
     }

@@ -25,9 +25,11 @@ public class BotConstants {
     public static final String TIME_PATTERN = "HH:mm";
     public static final String DATE_PATTERN = "dd  MMMM yyyy";
     public static final String TIME_DATE_PATTERN = "HH:mm dd MMMM yy";
-    public static final String ADD_CONTROLLER = "Добавьте работника: ";
+    public static final String ADD_CONTROLLER = "<b>Добавьте работника: </b>";
     public static final String HTML_MARKUP = "HTML";
     public static final String USER_INPUT_TIME_FORMAT = "HH.mm; HH:mm; HH,mm; HH mm";
     public static final String LINE = "----------------------------------";
     public static final String SECTOR = "<b>Рабочий сектор: </b>";
+    public static final String CHOOSE_SHIFT = "<b>Выберите смену: </b>";
+    public static final String CORRECT_TIME = "<b>Скорректируйте время: </b>";
 }

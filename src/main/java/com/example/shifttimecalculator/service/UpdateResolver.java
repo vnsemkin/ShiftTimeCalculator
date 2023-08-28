@@ -39,8 +39,8 @@ public class UpdateResolver {
                 this.conversations.put(chatId, conversation);
                 this.startConversation.startConversation(update, conversation);
             } else if (message.getText().equals(BotConstants.START_COMMAND)) {
-                conversation = this.conversations.get(message.getChatId());
-                this.startConversation.startConversation(update, conversation);
+                resetConversation(chatId);
+                this.startConversation.startConversation(update, new Conversation());
             } else {
                 conversation = this.conversations.get(chatId);
                 this.replyResolver.handleRequest(update, conversation);
@@ -55,5 +55,9 @@ public class UpdateResolver {
 
     private boolean isNewConversation(Long id) {
         return !this.conversations.containsKey(id);
+    }
+
+    private boolean resetConversation(Long chatId){
+        return Objects.nonNull(conversations.remove(chatId));
     }
 }

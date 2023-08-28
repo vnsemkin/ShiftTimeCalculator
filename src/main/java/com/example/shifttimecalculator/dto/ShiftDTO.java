@@ -16,8 +16,8 @@ public class ShiftDTO {
 
     public ShiftDTO(Shift shift) {
         this.name = shift.getName();
-        this.start = shift.getStart();
-        this.stop = shift.getStop();
+        this.start = shift.getCorrectedStartTime();
+        this.stop = shift.getCorrectedStopTime();
     }
 
     public String toString() {

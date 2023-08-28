@@ -3,8 +3,8 @@ package com.example.shifttimecalculator.service;
 
 import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.model.Conversation;
-import com.example.shifttimecalculator.service.callback_resolver.CallBackResolver;
-import com.example.shifttimecalculator.service.reply_resolver.ReplyResolver;
+import com.example.shifttimecalculator.service.answer_resolver.CallBackResolver;
+import com.example.shifttimecalculator.service.answer_resolver.ReplyResolver;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;

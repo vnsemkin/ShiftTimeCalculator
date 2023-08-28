@@ -1,13 +1,11 @@
-package com.example.shifttimecalculator.service.calc;
-
+package com.example.shifttimecalculator.service.calculation;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
-import com.example.shifttimecalculator.dto.ShiftDTO;
 import com.example.shifttimecalculator.entity.Shift;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.model.TimeValidator;
-import com.example.shifttimecalculator.service.question.ShiftTimeCorrectionQuestion;
+import com.example.shifttimecalculator.service.ask_question.ShiftTimeCorrectionQuestion;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -50,8 +48,6 @@ public class CorrectStartShiftTime {
                     Shift correctedShift = this.startShiftCorrection.correct(shift
                             , usersLocalTime.get());
                     conversation.setShift(correctedShift);
-                    ShiftDTO shiftDTO = new ShiftDTO(correctedShift);
-                    this.sender.sendTextMessage(chatId, shiftDTO.toString());
                     this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
                 }else {
                     LocalDate localDate = shift.getStop().toLocalDate();
@@ -59,8 +55,6 @@ public class CorrectStartShiftTime {
                     Shift correctedShift = this.startShiftCorrection.correct(shift
                             , usersLocalTime.get());
                     conversation.setShift(correctedShift);
-                    ShiftDTO shiftDTO = new ShiftDTO(correctedShift);
-                    this.sender.sendTextMessage(chatId, shiftDTO.toString());
                     this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
                 }
             } else {

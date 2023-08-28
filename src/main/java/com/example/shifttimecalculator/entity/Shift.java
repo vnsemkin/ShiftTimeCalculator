@@ -22,6 +22,10 @@ public class Shift {
     @Column(unique = true)
     private LocalDateTime stop;
     @Transient
+    private LocalDateTime correctedStartTime;
+    @Transient
+    private LocalDateTime correctedStopTime;
+    @Transient
     private Duration duration;
     @Transient
     private DataPerPerson dataPerPerson;

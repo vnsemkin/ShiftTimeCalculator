@@ -1,8 +1,12 @@
-package com.example.shifttimecalculator.service.callback_resolver;
+package com.example.shifttimecalculator.service.answer_resolver;
 
 
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
+import com.example.shifttimecalculator.service.answer_as_callback.CallBackPersonResolver;
+import com.example.shifttimecalculator.service.answer_as_callback.CallBackSectorResolver;
+import com.example.shifttimecalculator.service.answer_as_callback.CallBackShiftResolver;
+import com.example.shifttimecalculator.service.answer_as_callback.CallBackShiftTimeResolver;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.springframework.stereotype.Service;
 

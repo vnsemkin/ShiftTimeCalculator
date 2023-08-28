@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.callback_resolver;
+package com.example.shifttimecalculator.service.answer_as_callback;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
@@ -7,10 +7,10 @@ import com.example.shifttimecalculator.entity.Person;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.repository.PersonRepo;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
-import com.example.shifttimecalculator.service.question.PersonQuestion;
+import com.example.shifttimecalculator.service.ask_question.PersonQuestion;
 import com.example.shifttimecalculator.util.MessageSender;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -26,7 +26,10 @@ public class CallBackPersonResolver implements RespHandlerInterface {
     private final PersonQuestion personQuestion;
     private final CallBackGetTimetable callBackGetTimetable;
 
-    public CallBackPersonResolver(MessageSender sender, PersonRepo personRepo, PersonQuestion personQuestion, CallBackGetTimetable callBackGetTimetable) {
+    public CallBackPersonResolver(MessageSender sender
+            , PersonRepo personRepo
+            , PersonQuestion personQuestion
+            , CallBackGetTimetable callBackGetTimetable) {
         this.sender = sender;
         this.personRepo = personRepo;
         this.personQuestion = personQuestion;

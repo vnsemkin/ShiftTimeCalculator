@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.calc;
+package com.example.shifttimecalculator.service.calculation;
 
 import com.example.shifttimecalculator.entity.Shift;
 import org.springframework.stereotype.Component;
@@ -11,8 +11,8 @@ public class StopShiftCorrection {
     }
 
     public Shift correct(Shift shift, int minutes) {
-        LocalDateTime newStop = shift.getStop().minusMinutes((long)minutes);
-        shift.setStop(newStop);
+        LocalDateTime newStop = shift.getStop().minusMinutes(minutes);
+        shift.setCorrectedStopTime(newStop);
         return shift;
     }
 }

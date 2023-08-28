@@ -1,5 +1,6 @@
 package com.example.shifttimecalculator.util;
 
+import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.entity.Shift;
 
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ public class ShiftUpdater {
         LocalDateTime currentDate = LocalDateTime.now().withNano(0);
         LocalDateTime updatedStartTime = currentDate.with(startTime);
         LocalDateTime updatedStopTime;
-        if (!originalShift.getName().equalsIgnoreCase("Ночная")) {
+        if (!originalShift.getName().equalsIgnoreCase(BotConstants.NIGHT_SHIFT)) {
             updatedStopTime = currentDate.with(stopTime);
         } else {
             updatedStopTime = currentDate.plusDays(1L).with(stopTime);
@@ -25,7 +26,9 @@ public class ShiftUpdater {
         updatedShift.setId(originalShift.getId());
         updatedShift.setName(originalShift.getName());
         updatedShift.setStart(updatedStartTime);
+        updatedShift.setCorrectedStartTime(updatedStartTime);
         updatedShift.setStop(updatedStopTime);
+        updatedShift.setCorrectedStopTime(updatedStopTime);
         updatedShift.setDuration(originalShift.getDuration());
         updatedShift.setDataPerPerson(originalShift.getDataPerPerson());
         return updatedShift;

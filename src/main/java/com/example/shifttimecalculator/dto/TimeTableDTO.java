@@ -1,13 +1,16 @@
 package com.example.shifttimecalculator.dto;
 
 
+import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.model.TimePeriod;
 import com.example.shifttimecalculator.model.TimeTable;
 import lombok.Data;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Data
@@ -21,27 +24,34 @@ public class TimeTableDTO {
 
     public TimeTableDTO(TimeTable timeTable) {
         this.shiftName = timeTable.getShift().getName();
-        this.startShift = LocalTime.from(timeTable.getShift().getStart());
-        this.stopShift = LocalTime.from(timeTable.getShift().getStop());
+        this.startShift = LocalTime.from(timeTable.getShift().getCorrectedStartTime());
+        this.stopShift = LocalTime.from(timeTable.getShift().getCorrectedStopTime());
         this.shiftDuration = timeTable.getShift().getDuration();
         this.timePeriodList = timeTable.getTimePeriodList();
         this.durationPerPerson = Duration.ofMinutes(timeTable.getShift().getDataPerPerson().getOverallTime());
     }
 
     public String toString() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(BotConstants.TIME_PATTERN
+                , new Locale("ru", "RU"));
         String collect = this.timePeriodList.stream().map((p) -> {
             String person = p.getPerson().getName();
+            long hours = p.getDuration().toHours();
+            long minutes = p.getDuration().toMinutesPart();
             return "Работник: " + person
                     + " "
                     + p.getPerson().getSurname()
                     + "\nДлительность: "
-                    + p.getDuration()
+                    + hours
+                    + ":"
+                    + minutes
                     + "\nПринимает: "
-                    + p.getStart()
+                    + p.getStart().format(timeFormatter)
                     + "\nМеняют: "
-                    + p.getStop()
+                    + p.getStop().format(timeFormatter)
                     + "\n";
         }).collect(Collectors.joining("\n"));
+
         return "Распределение:\nСмена: "
                 + this.shiftName
                 + "\nДлительность смены: "

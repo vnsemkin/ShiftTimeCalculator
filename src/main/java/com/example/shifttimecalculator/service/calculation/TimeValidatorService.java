@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.calc;
+package com.example.shifttimecalculator.service.calculation;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
@@ -31,7 +31,7 @@ public class TimeValidatorService {
                 timeValidator.setValidate(true);
                 timeValidator.setAfterMidnight(true);
             } else if (newTime.isAfter(shiftStartTime.toLocalTime())
-                    && newTime.isBefore(LocalTime.of(0, 0))) {
+                    && newTime.isBefore(LocalTime.of(23, 59))) {
                 timeValidator.setValidate(true);
             } else {
                 timeValidator.setValidate(false);

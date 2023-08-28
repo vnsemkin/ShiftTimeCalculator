@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.calc;
+package com.example.shifttimecalculator.service.calculation;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
@@ -43,7 +43,7 @@ public class TimeTableCalculation {
         List<Person> personList = conversation.getPersonList();
 
         for(int i = 0; i < timePeriodList.size(); ++i) {
-            ((TimePeriod)timePeriodList.get(i)).setPerson((Person)personList.get(i % personList.size()));
+            (timePeriodList.get(i)).setPerson(personList.get(i % personList.size()));
         }
 
         return timePeriodList;
@@ -51,7 +51,7 @@ public class TimeTableCalculation {
 
     public DataPerPerson getDataPerPerson(Conversation conversation) {
         List<Person> personSet = conversation.getPersonList();
-        Duration overallDurationPerPerson = this.shiftDuration.dividedBy((long)personSet.size());
+        Duration overallDurationPerPerson = this.shiftDuration.dividedBy(personSet.size());
         long overallDurationPerPersonMinutes = overallDurationPerPerson.toMinutes();
         if (overallDurationPerPerson.toMinutes() > this.oneTimeWorkingPeriod) {
             long numberOfWorkPeriodsPerPerson = this.getNumberOfWorkPeriodsPerPerson(overallDurationPerPersonMinutes);

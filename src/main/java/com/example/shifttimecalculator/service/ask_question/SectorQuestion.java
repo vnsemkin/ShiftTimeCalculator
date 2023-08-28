@@ -1,6 +1,7 @@
-package com.example.shifttimecalculator.service.question;
+package com.example.shifttimecalculator.service.ask_question;
 
 
+import com.example.shifttimecalculator.dto.ShiftDTO;
 import com.example.shifttimecalculator.entity.Sector;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.repository.SectorRepo;
@@ -28,7 +29,10 @@ public class SectorQuestion implements RespHandlerInterface {
     public void handleRequest(Update update, Conversation conversation) {
         conversation.setStep(3);
         Message message = update.getCallbackQuery().getMessage();
+        Long chatId = update.getCallbackQuery().getMessage().getChatId();
         SendMessage sm = new SendMessage();
+        ShiftDTO shiftDTO = new ShiftDTO(conversation.getShift());
+        this.sender.sendTextMessage(chatId, shiftDTO.toString());
         sm.setChatId(message.getChatId());
         sm.setText("<b>Выберите сектор: </b>");
         sm.setReplyMarkup(this.sendKeyboard());

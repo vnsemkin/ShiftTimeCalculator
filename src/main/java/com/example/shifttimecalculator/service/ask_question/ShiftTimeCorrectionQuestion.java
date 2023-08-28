@@ -1,13 +1,15 @@
-package com.example.shifttimecalculator.service.question;
+package com.example.shifttimecalculator.service.ask_question;
 
 
+import com.example.shifttimecalculator.constants.BotConstants;
+import com.example.shifttimecalculator.dto.ShiftDTO;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
 import com.example.shifttimecalculator.util.BotKeyboardFactory;
 import com.example.shifttimecalculator.util.MessageSender;
+import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import java.util.List;
@@ -23,18 +25,23 @@ public class ShiftTimeCorrectionQuestion implements RespHandlerInterface {
 
     public void handleRequest(Update update, Conversation conversation) {
         conversation.setStep(2);
-        Long chatId = Objects.isNull(update.getCallbackQuery()) ? update.getMessage().getChatId() : update.getCallbackQuery().getMessage().getChatId();
+        Long chatId = Objects.isNull(update.getCallbackQuery())
+                ? update.getMessage().getChatId() : update.getCallbackQuery()
+                .getMessage()
+                .getChatId();
         SendMessage sm = new SendMessage();
         sm.setChatId(chatId);
-        sm.setText("-----------------------------------");
+        sm.setText(BotConstants.LINE);
         sm.setReplyMarkup(this.sendKeyboard());
+        ShiftDTO shiftDTO = new ShiftDTO(conversation.getShift());
+        this.sender.sendTextMessage(chatId, shiftDTO.toString());
         this.sender.sendMessage(sm);
     }
 
     private InlineKeyboardMarkup sendKeyboard() {
-        List<String> buttons = List.of("Изменить начало смены"
-                , "Изменить конец смены"
-                , "Ничего не менять");
+        List<String> buttons = List.of(BotConstants.CORRECT_SHIFT_START
+                , BotConstants.CORRECT_SHIFT_STOP
+                , BotConstants.APPLY_CORRECTION);
         return BotKeyboardFactory.getInlineKeyboard(buttons, true);
     }
 }

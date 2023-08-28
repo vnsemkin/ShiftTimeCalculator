@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.question;
+package com.example.shifttimecalculator.service.ask_question;
 
 
 import com.example.shifttimecalculator.entity.Shift;

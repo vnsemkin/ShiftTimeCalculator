@@ -5,7 +5,7 @@ import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.entity.Shift;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.model.TimeValidator;
-import com.example.shifttimecalculator.service.ask_question.ShiftTimeCorrectionQuestion;
+import com.example.shifttimecalculator.service.question.ShiftTimeCorrectionQuestion;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;

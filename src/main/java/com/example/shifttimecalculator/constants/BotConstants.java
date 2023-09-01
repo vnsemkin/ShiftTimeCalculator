@@ -32,4 +32,7 @@ public class BotConstants {
     public static final String CORRECT_TIME = "<b>Скорректируйте время: </b>";
     public static final String CHOOSE_STRATEGY = "<b>Выберите стратегию: </b>";
     public static final String NOT_ENOUGH_WORKERS= "<b>Добавьте работников</b>";
+    public static final String STRATEGY_EQUAL_PERIODS= "Равные промежутки";
+    public static final String STRATEGY_ANOTHER= "Другая";
+    public static final String EXCEPTION_EMPTY_MESSAGE= "Пустой update";
 }

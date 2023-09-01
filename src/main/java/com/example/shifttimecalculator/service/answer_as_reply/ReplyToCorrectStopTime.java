@@ -3,7 +3,7 @@ package com.example.shifttimecalculator.service.answer_as_reply;
 import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.entity.Shift;
 import com.example.shifttimecalculator.model.Conversation;
-import com.example.shifttimecalculator.service.ask_question.ShiftTimeCorrectionQuestion;
+import com.example.shifttimecalculator.service.question.ShiftTimeCorrectionQuestion;
 import com.example.shifttimecalculator.service.calculation.StopShiftCorrection;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;

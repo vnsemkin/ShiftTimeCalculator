@@ -4,7 +4,7 @@ package com.example.shifttimecalculator.service.answer_as_callback;
 import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.model.Conversation;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
-import com.example.shifttimecalculator.service.ask_question.SectorQuestion;
+import com.example.shifttimecalculator.service.question.SectorQuestion;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

@@ -1,11 +1,11 @@
-package com.example.shifttimecalculator.service.ask_question;
+package com.example.shifttimecalculator.service.question;
 
 
 import com.example.shifttimecalculator.dto.ConversationDTO;
 import com.example.shifttimecalculator.entity.Sector;
 import com.example.shifttimecalculator.model.Conversation;
-import com.example.shifttimecalculator.repository.SectorRepo;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
+import com.example.shifttimecalculator.service.dao.implementation.SectorInterfaceImpl;
 import com.example.shifttimecalculator.util.BotKeyboardFactory;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ import java.util.List;
 @Service
 public class SectorQuestion implements RespHandlerInterface {
     private final MessageSender sender;
-    private final SectorRepo sectorRepo;
+    private final SectorInterfaceImpl sectorInterface;
 
-    public SectorQuestion(MessageSender sender, SectorRepo sectorRepo) {
+    public SectorQuestion(MessageSender sender, SectorInterfaceImpl sectorInterface) {
         this.sender = sender;
-        this.sectorRepo = sectorRepo;
+        this.sectorInterface = sectorInterface;
     }
 
     public void handleRequest(Update update, Conversation conversation) {
@@ -39,7 +39,7 @@ public class SectorQuestion implements RespHandlerInterface {
     }
 
     private InlineKeyboardMarkup sendKeyboard() {
-        List<String> buttons = this.sectorRepo.findAll().stream()
+        List<String> buttons = sectorInterface.findAll().stream()
                 .map(Sector::getName).toList();
         return BotKeyboardFactory.getInlineKeyboard(buttons, false);
     }

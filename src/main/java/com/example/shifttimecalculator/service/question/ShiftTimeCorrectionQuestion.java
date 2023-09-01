@@ -1,4 +1,4 @@
-package com.example.shifttimecalculator.service.ask_question;
+package com.example.shifttimecalculator.service.question;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;

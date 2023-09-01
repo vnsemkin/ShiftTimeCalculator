@@ -1,12 +1,12 @@
-package com.example.shifttimecalculator.service.ask_question;
+package com.example.shifttimecalculator.service.question;
 
 
 import com.example.shifttimecalculator.constants.BotConstants;
 import com.example.shifttimecalculator.dto.ConversationDTO;
 import com.example.shifttimecalculator.entity.Sector;
 import com.example.shifttimecalculator.model.Conversation;
-import com.example.shifttimecalculator.repository.PersonRepo;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
+import com.example.shifttimecalculator.service.dao.implementation.PersonInterfaceImpl;
 import com.example.shifttimecalculator.util.BotKeyboardFactory;
 import com.example.shifttimecalculator.util.MessageSender;
 import org.springframework.stereotype.Service;
@@ -22,11 +22,12 @@ import java.util.Optional;
 @Service
 public class PersonQuestion implements RespHandlerInterface {
     private final MessageSender sender;
-    private final PersonRepo personRepo;
+    private final PersonInterfaceImpl personInterface;
 
-    public PersonQuestion(MessageSender sender, PersonRepo personRepo) {
+    public PersonQuestion(MessageSender sender, PersonInterfaceImpl personInterface) {
         this.sender = sender;
-        this.personRepo = personRepo;
+
+        this.personInterface = personInterface;
     }
     @Override
     public void handleRequest(Update update, Conversation conversation) {
@@ -44,8 +45,8 @@ public class PersonQuestion implements RespHandlerInterface {
     }
 
     private InlineKeyboardMarkup sendKeyboard(String sector) {
-        List<String> buttons = new ArrayList<>(this.personRepo
-                .findBySectors_Name(sector)
+        List<String> buttons = new ArrayList<>(personInterface
+                .findBySector(sector)
                 .stream()
                 .map((p) -> p.getName() + " " + p.getSurname()).toList());
         buttons.add(BotConstants.CONTINUE);

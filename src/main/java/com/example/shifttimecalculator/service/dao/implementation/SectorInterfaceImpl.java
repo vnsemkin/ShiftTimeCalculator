@@ -16,7 +16,7 @@ public class SectorInterfaceImpl implements SectorInterface {
     }
 
     @Override
-    public List<Sector> findAll(){
+    public List<Sector> findAll() {
         return sectorRepo.findAll();
     }
 

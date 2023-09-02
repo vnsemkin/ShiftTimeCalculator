@@ -13,7 +13,7 @@ public class ReplyToCorrectStartShiftTime {
         this.correctStartShiftTime = correctStartShiftTime;
     }
 
-    public void getCorrectStartShiftTime(Update update, Conversation conversation){
-        correctStartShiftTime.getShiftWithCorrectedStartTime(update,conversation);
+    public void getCorrectStartShiftTime(Update update, Conversation conversation) {
+        correctStartShiftTime.getShiftWithCorrectedStartTime(update, conversation);
     }
 }

@@ -42,7 +42,7 @@ public class TimeTableCalculation {
         List<TimePeriod> timePeriodList = this.getTimePeriodsForShift(conversation);
         List<Person> personList = conversation.getPersonList();
 
-        for(int i = 0; i < timePeriodList.size(); ++i) {
+        for (int i = 0; i < timePeriodList.size(); ++i) {
             (timePeriodList.get(i)).setPerson(personList.get(i % personList.size()));
         }
 
@@ -78,14 +78,14 @@ public class TimeTableCalculation {
         DataPerPerson dataPerPerson = shift.getDataPerPerson();
         long overallTimePerPeriod = dataPerPerson.getOverallTime();
         int personsNumber = conversation.getPersonList().size();
-        int periodsNumberForPerson = (int)conversation.getShift().getDataPerPerson().getPeriodsNumber();
+        int periodsNumberForPerson = (int) conversation.getShift().getDataPerPerson().getPeriodsNumber();
         int periodsDuringShift = personsNumber * periodsNumberForPerson;
-        Duration periodDuration = Duration.ofMinutes(overallTimePerPeriod / (long)periodsNumberForPerson);
-        Duration remainder = Duration.ofMinutes(overallTimePerPeriod % (long)periodsNumberForPerson);
+        Duration periodDuration = Duration.ofMinutes(overallTimePerPeriod / (long) periodsNumberForPerson);
+        Duration remainder = Duration.ofMinutes(overallTimePerPeriod % (long) periodsNumberForPerson);
         LocalDateTime start = shift.getStart();
         int lastPeriods = periodsDuringShift - (personsNumber + periodsNumberForPerson - 1);
 
-        while(periodsDuringShift != 0) {
+        while (periodsDuringShift != 0) {
             TimePeriod timePeriod = new TimePeriod();
             if (remainder.toMinutes() == 0L) {
                 timePeriod.setStart(start);

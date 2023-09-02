@@ -19,8 +19,9 @@ public class PersonInterfaceImpl implements PersonInterface {
     public Set<Person> findBySector(String name) {
         return personRepo.findBySectors_Name(name);
     }
+
     @Override
-    public Person findByNameAndSurname(String name, String surname){
+    public Person findByNameAndSurname(String name, String surname) {
         return personRepo.findByNameAndSurname(name, surname);
     }
 }

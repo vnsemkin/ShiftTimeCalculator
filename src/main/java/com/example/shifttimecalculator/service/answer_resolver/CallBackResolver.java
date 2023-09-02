@@ -35,7 +35,7 @@ public class CallBackResolver implements RespHandlerInterface {
             case 2 -> this.callBackShiftTimeResolver.handleRequest(update, conversation);
             case 3 -> this.sectorResolver.handleRequest(update, conversation);
             case 4 -> this.personResolver.handleRequest(update, conversation);
-            case 5 -> this.callBackStrategyResolver.handleRequest(update,conversation);
+            case 5 -> this.callBackStrategyResolver.handleRequest(update, conversation);
         }
     }
 }

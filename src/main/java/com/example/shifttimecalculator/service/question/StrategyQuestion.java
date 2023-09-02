@@ -40,10 +40,10 @@ public class StrategyQuestion implements RespHandlerInterface {
 
     private InlineKeyboardMarkup sendKeyboard() {
         List<String> buttons = Arrays.stream(Strategy.values())
-                .map(strategy ->{
+                .map(strategy -> {
                     if (strategy.equals(Strategy.EQUAL_PERIODS)) {
                         return BotConstants.STRATEGY_EQUAL_PERIODS;
-                    }else {
+                    } else {
                         return BotConstants.STRATEGY_ANOTHER;
                     }
                 })

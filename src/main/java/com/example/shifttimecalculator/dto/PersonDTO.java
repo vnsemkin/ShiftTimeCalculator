@@ -13,6 +13,10 @@ public class PersonDTO {
         this.surname = person.getSurname();
     }
 
+    public PersonDTO(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
 
     public String toString() {
         return "PersonDTO(name=" + name + ", surname=" + surname + ")";

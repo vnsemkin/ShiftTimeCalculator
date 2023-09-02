@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ShiftInterface {
     List<Shift> findAll();
+
     Shift findByName(String name);
 }

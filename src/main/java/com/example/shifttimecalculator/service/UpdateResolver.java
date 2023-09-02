@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -58,22 +59,22 @@ public class UpdateResolver {
         return !this.conversations.containsKey(id);
     }
 
-    private boolean resetConversation(Long chatId){
+    private boolean resetConversation(Long chatId) {
         return Objects.nonNull(conversations.remove(chatId));
     }
-    
-    private void getChatId(Update update){
-        if(Objects.isNull(update.getCallbackQuery())
-                && Objects.nonNull(update.getMessage())){
+
+    private void getChatId(Update update) {
+        if (Objects.isNull(update.getCallbackQuery())
+                && Objects.nonNull(update.getMessage())) {
             chatId = update.getMessage().getChatId();
-        }else if (Objects.nonNull(update.getCallbackQuery()) && Objects.isNull(update.getMessage())) {
+        } else if (Objects.nonNull(update.getCallbackQuery()) && Objects.isNull(update.getMessage())) {
             chatId = update.getCallbackQuery().getMessage().getChatId();
-        }else {
+        } else {
             throw new CantGetMessageException(BotConstants.EXCEPTION_EMPTY_MESSAGE);
         }
     }
 
-    private void createNewConversation(Update update){
+    private void createNewConversation(Update update) {
         conversation = new Conversation();
         this.conversations.put(chatId, conversation);
         this.startConversation.startConversation(update, conversation);

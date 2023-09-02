@@ -39,7 +39,7 @@ public class ReplyResolver implements RespHandlerInterface {
                         .getStopShiftCorrection(update, conversation);
                 default -> this.startConversation.startConversation(update, conversation);
             }
-        }else {
+        } else {
             this.startConversation.startConversation(update, conversation);
         }
     }

@@ -34,7 +34,7 @@ public class ReplyToCorrectStopTime {
             Shift correctedShift = stopShiftCorrection.correct(conversation.getShift(), userInput);
             conversation.setShift(correctedShift);
             this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
-        }else {
+        } else {
             this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
 
         }

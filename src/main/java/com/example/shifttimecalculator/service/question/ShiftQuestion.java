@@ -21,7 +21,7 @@ public class ShiftQuestion implements RespHandlerInterface {
     private final MessageSender sender;
     private final ShiftInterfaceImpl shiftInterface;
 
-    public ShiftQuestion(MessageSender sender,ShiftInterfaceImpl shiftInterface) {
+    public ShiftQuestion(MessageSender sender, ShiftInterfaceImpl shiftInterface) {
         this.sender = sender;
 
         this.shiftInterface = shiftInterface;

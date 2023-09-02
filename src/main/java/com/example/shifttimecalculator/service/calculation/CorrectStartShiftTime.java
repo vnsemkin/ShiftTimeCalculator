@@ -44,12 +44,12 @@ public class CorrectStartShiftTime {
             TimeValidator timeValidator = timeValidatorService.validateShiftStartTime(shift
                     , usersLocalTime.get());
             if (timeValidator.isValidate()) {
-                if(!timeValidator.isAfterMidnight()) {
+                if (!timeValidator.isAfterMidnight()) {
                     Shift correctedShift = this.startShiftCorrection.correct(shift
                             , usersLocalTime.get());
                     conversation.setShift(correctedShift);
                     this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
-                }else {
+                } else {
                     LocalDate localDate = shift.getStop().toLocalDate();
                     shift.setStart(localDate.atTime(shift.getStart().toLocalTime()));
                     Shift correctedShift = this.startShiftCorrection.correct(shift

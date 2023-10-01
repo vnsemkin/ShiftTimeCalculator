@@ -109,7 +109,6 @@ public class TimeTableCalculation {
                 --periodsDuringShift;
             }
         }
-
         return timePeriods;
     }
 }

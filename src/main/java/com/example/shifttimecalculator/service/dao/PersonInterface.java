@@ -8,5 +8,4 @@ public interface PersonInterface {
     Set<Person> findBySector(String sectorName);
 
     Person findByNameAndSurname(String name, String surname);
-
 }

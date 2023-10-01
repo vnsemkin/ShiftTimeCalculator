@@ -21,5 +21,4 @@ public class PersonDTO {
     public String toString() {
         return "PersonDTO(name=" + name + ", surname=" + surname + ")";
     }
-
 }

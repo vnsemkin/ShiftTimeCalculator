@@ -33,5 +33,4 @@ public class CallBackStrategyResolver implements RespHandlerInterface {
             }
         }
     }
-
 }

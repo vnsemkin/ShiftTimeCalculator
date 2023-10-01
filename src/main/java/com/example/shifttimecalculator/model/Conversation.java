@@ -16,5 +16,4 @@ public class Conversation {
     private Sector sector;
     private Strategy strategy;
     private List<Person> personList;
-
 }

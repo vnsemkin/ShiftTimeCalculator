@@ -49,5 +49,4 @@ public class ConversationDTO {
         }
         return sb.toString();
     }
-
 }

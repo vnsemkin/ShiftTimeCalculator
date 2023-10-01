@@ -24,5 +24,4 @@ public class SectorInterfaceImpl implements SectorInterface {
     public Sector findByName(String name) {
         return sectorRepo.findByName(name);
     }
-
 }

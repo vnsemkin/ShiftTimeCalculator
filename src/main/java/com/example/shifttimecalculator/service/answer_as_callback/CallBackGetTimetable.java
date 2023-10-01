@@ -31,5 +31,4 @@ public class CallBackGetTimetable implements RespHandlerInterface {
         sm.setText(timeTableDTO.toString());
         this.sender.sendMessage(sm);
     }
-
 }

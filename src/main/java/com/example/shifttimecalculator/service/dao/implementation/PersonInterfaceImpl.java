@@ -24,5 +24,4 @@ public class PersonInterfaceImpl implements PersonInterface {
     public Person findByNameAndSurname(String name, String surname) {
         return personRepo.findByNameAndSurname(name, surname);
     }
-
 }

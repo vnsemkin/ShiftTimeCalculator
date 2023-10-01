@@ -36,7 +36,6 @@ public class SectorQuestion implements RespHandlerInterface {
         sm.setText("<b>Выберите сектор: </b>");
         sm.setReplyMarkup(this.sendKeyboard());
         this.sender.sendMessage(sm);
-
     }
 
     private InlineKeyboardMarkup sendKeyboard() {

@@ -9,5 +9,4 @@ public class BotKeyboardFactory {
     public static InlineKeyboardMarkup getInlineKeyboard(List<String> buttons, boolean rows) {
         return InlineKeyboard.getInlineKeyboard(buttons, rows);
     }
-
 }

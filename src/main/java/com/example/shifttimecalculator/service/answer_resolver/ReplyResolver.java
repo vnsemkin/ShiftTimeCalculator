@@ -43,5 +43,4 @@ public class ReplyResolver implements RespHandlerInterface {
             this.startConversation.startConversation(update, conversation);
         }
     }
-
 }

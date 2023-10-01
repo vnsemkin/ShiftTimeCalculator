@@ -36,5 +36,4 @@ public class MessageSender extends DefaultAbsSender {
             throw new RuntimeException(e);
         }
     }
-
 }

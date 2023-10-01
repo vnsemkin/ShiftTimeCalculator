@@ -33,4 +33,5 @@ public class ShiftUpdater {
         updatedShift.setDataPerPerson(originalShift.getDataPerPerson());
         return updatedShift;
     }
+
 }

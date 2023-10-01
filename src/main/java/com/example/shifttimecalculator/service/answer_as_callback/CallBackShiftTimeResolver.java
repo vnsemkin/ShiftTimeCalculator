@@ -40,7 +40,6 @@ public class CallBackShiftTimeResolver implements RespHandlerInterface {
             }
             default -> this.sectorQuestion.handleRequest(update, conversation);
         }
-
     }
 }
 

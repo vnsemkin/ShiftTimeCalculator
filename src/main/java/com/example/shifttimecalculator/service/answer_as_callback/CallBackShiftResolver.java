@@ -3,11 +3,9 @@ package com.example.shifttimecalculator.service.answer_as_callback;
 
 import com.example.shifttimecalculator.entity.Shift;
 import com.example.shifttimecalculator.model.Conversation;
-import com.example.shifttimecalculator.repository.ShiftRepo;
 import com.example.shifttimecalculator.service.RespHandlerInterface;
 import com.example.shifttimecalculator.service.dao.implementation.ShiftInterfaceImpl;
 import com.example.shifttimecalculator.service.question.ShiftTimeCorrectionQuestion;
-import com.example.shifttimecalculator.util.MessageSender;
 import com.example.shifttimecalculator.util.ShiftUpdater;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -31,5 +29,6 @@ public class CallBackShiftResolver implements RespHandlerInterface {
         conversation.setShift(newShift);
         this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
     }
+
 }
 

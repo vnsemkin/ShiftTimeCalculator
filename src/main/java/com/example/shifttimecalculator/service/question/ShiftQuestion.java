@@ -43,4 +43,5 @@ public class ShiftQuestion implements RespHandlerInterface {
                 .map(Shift::getName).toList();
         return BotKeyboardFactory.getInlineKeyboard(buttons, false);
     }
+
 }

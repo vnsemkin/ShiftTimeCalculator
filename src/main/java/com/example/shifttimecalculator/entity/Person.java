@@ -14,6 +14,7 @@ public class Person {
     private Integer id;
     private String name;
     private String surname;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Sector> sectors;
+
 }

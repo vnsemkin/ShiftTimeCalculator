@@ -8,4 +8,5 @@ public interface SectorInterface {
     List<Sector> findAll();
 
     Sector findByName(String name);
+
 }

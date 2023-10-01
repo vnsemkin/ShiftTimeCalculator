@@ -12,4 +12,5 @@ public class TimePeriod {
     private LocalDateTime start;
     private LocalDateTime stop;
     private Person person;
+
 }

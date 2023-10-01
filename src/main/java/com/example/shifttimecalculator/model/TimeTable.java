@@ -9,4 +9,5 @@ import java.util.List;
 public class TimeTable {
     private Shift shift;
     private List<TimePeriod> timePeriodList;
+
 }

@@ -38,5 +38,4 @@ public class ShiftDTO {
                 + "\n" + formattedStopTime
                 + "\n" + formattedStopDate;
     }
-
 }

@@ -24,4 +24,5 @@ public class TelegramBotController extends TelegramLongPollingBot {
     public String getBotUsername() {
         return "Time Table Calculator";
     }
+
 }

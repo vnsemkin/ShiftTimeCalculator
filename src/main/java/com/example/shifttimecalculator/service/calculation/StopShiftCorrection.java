@@ -15,5 +15,6 @@ public class StopShiftCorrection {
         shift.setCorrectedStopTime(newStop);
         return shift;
     }
+
 }
 

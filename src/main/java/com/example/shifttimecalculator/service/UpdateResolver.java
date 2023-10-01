@@ -79,4 +79,5 @@ public class UpdateResolver {
         this.conversations.put(chatId, conversation);
         this.startConversation.startConversation(update, conversation);
     }
+
 }

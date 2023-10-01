@@ -28,7 +28,7 @@ public class TimeTableDTO {
         this.stopShift = LocalTime.from(timeTable.getShift().getCorrectedStopTime());
         this.shiftDuration = timeTable.getShift().getDuration();
         this.timePeriodList = timeTable.getTimePeriodList();
-        this.durationPerPerson = Duration.ofMinutes(timeTable.getShift().getDataPerPerson().getOverallTime());
+        this.durationPerPerson = Duration.ofMinutes(timeTable.getShift().getDataPerPerson().overallTime());
     }
 
     public String toString() {

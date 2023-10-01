@@ -23,8 +23,8 @@ public class MessageSender extends DefaultAbsSender {
 
         try {
             this.execute(sm);
-        } catch (TelegramApiException var5) {
-            throw new RuntimeException(var5);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -32,8 +32,9 @@ public class MessageSender extends DefaultAbsSender {
         try {
             sm.setParseMode(BotConstants.HTML_MARKUP);
             this.execute(sm);
-        } catch (TelegramApiException var3) {
-            throw new RuntimeException(var3);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
         }
     }
+
 }

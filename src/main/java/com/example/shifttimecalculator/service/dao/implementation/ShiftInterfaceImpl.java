@@ -24,4 +24,5 @@ public class ShiftInterfaceImpl implements ShiftInterface {
     public Shift findByName(String name) {
         return shiftRepo.findByName(name);
     }
+
 }

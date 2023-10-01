@@ -76,9 +76,9 @@ public class TimeTableCalculation {
         List<TimePeriod> timePeriods = new ArrayList<>();
         Shift shift = conversation.getShift();
         DataPerPerson dataPerPerson = shift.getDataPerPerson();
-        long overallTimePerPeriod = dataPerPerson.getOverallTime();
+        long overallTimePerPeriod = dataPerPerson.overallTime();
         int personsNumber = conversation.getPersonList().size();
-        int periodsNumberForPerson = (int) conversation.getShift().getDataPerPerson().getPeriodsNumber();
+        int periodsNumberForPerson = (int) conversation.getShift().getDataPerPerson().periodsNumber();
         int periodsDuringShift = personsNumber * periodsNumberForPerson;
         Duration periodDuration = Duration.ofMinutes(overallTimePerPeriod / (long) periodsNumberForPerson);
         Duration remainder = Duration.ofMinutes(overallTimePerPeriod % (long) periodsNumberForPerson);

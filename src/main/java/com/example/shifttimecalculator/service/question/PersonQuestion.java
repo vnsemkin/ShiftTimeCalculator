@@ -57,4 +57,5 @@ public class PersonQuestion implements RespHandlerInterface {
     private String getSectorName(Sector sector) {
         return Optional.ofNullable(sector.getName()).orElse("");
     }
+
 }

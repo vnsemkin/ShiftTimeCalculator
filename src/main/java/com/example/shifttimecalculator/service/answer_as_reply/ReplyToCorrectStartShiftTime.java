@@ -16,4 +16,5 @@ public class ReplyToCorrectStartShiftTime {
     public void getCorrectStartShiftTime(Update update, Conversation conversation) {
         correctStartShiftTime.getShiftWithCorrectedStartTime(update, conversation);
     }
+
 }

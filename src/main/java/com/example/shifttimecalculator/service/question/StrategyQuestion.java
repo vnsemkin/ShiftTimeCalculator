@@ -50,4 +50,5 @@ public class StrategyQuestion implements RespHandlerInterface {
                 .toList();
         return BotKeyboardFactory.getInlineKeyboard(buttons, true);
     }
+
 }

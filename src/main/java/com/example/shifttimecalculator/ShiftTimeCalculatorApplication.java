@@ -16,4 +16,5 @@ public class ShiftTimeCalculatorApplication {
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
         botsApi.registerBot(run.getBean(TelegramBotController.class));
     }
+
 }

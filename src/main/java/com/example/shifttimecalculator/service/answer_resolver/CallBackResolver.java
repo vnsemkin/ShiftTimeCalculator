@@ -38,6 +38,5 @@ public class CallBackResolver implements RespHandlerInterface {
             case 5 -> this.callBackStrategyResolver.handleRequest(update, conversation);
         }
     }
-
 }
 

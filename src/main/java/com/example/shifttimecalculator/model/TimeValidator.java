@@ -7,5 +7,4 @@ public class TimeValidator {
     private String message;
     private boolean validate;
     private boolean afterMidnight;
-
 }

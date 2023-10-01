@@ -28,5 +28,4 @@ public class InlineKeyboard {
             return customButton;
         }).toList();
     }
-
 }

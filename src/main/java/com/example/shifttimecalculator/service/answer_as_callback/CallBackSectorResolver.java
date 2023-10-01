@@ -27,6 +27,4 @@ public class CallBackSectorResolver implements RespHandlerInterface {
         conversation.setSector(sector);
         this.personQuestion.handleRequest(update, conversation);
     }
-
 }
-

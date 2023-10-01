@@ -42,4 +42,3 @@ public class CallBackShiftTimeResolver implements RespHandlerInterface {
         }
     }
 }
-

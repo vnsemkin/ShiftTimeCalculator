@@ -16,5 +16,4 @@ public class SectorDTO {
     public String toString() {
         return BotConstants.SECTOR + "\n" + name;
     }
-
 }

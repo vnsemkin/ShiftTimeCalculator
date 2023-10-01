@@ -16,5 +16,4 @@ public class Person {
     private String surname;
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Sector> sectors;
-
 }

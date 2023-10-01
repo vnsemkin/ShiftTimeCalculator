@@ -29,6 +29,4 @@ public class CallBackShiftResolver implements RespHandlerInterface {
         conversation.setShift(newShift);
         this.shiftTimeCorrectionQuestion.handleRequest(update, conversation);
     }
-
 }
-

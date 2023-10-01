@@ -25,6 +25,5 @@ public class StartConversation {
         this.sender.sendTextMessage(chatId, text);
         this.shiftQuestion.handleRequest(update, conversation);
     }
-
 }
 

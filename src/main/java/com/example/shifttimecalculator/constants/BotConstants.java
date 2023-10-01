@@ -29,5 +29,4 @@ public class BotConstants {
     public static final String STRATEGY_EQUAL_PERIODS = "Равные промежутки";
     public static final String STRATEGY_ANOTHER = "Другая";
     public static final String EXCEPTION_EMPTY_MESSAGE = "Пустой update";
-
 }

@@ -29,5 +29,4 @@ public class Shift {
     private Duration duration;
     @Transient
     private DataPerPerson dataPerPerson;
-
 }

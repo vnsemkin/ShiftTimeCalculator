@@ -48,5 +48,4 @@ public class ReplyToCorrectStopTime {
             return false;
         }
     }
-
 }

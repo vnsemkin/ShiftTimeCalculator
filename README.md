@@ -1,7 +1,5 @@
 <div style="text-align: center" align="center">
-    <a style="display: inline-block; width: 100px; height: 100px; overflow: hidden;">
-    <img src="./.media/logo.png" style="width: 100%; height: auto;" alt="">
-</a>
+    <a><img src="./.media/logo.png" style="width: 100%; height: auto;" alt=""></a>
     <h1>Телеграм бот расчета рабочего времени работника </h1>
     <p>Бот предназначен для расчета времени труда и отдыха
 работника при сменном дежурстве в составе бригады.
@@ -11,7 +9,8 @@
 </div>
 <br>
 
-## ⭐ Cтeк 
+## ⭐ Cтeк
+
 - Spring Boot
 - Spring Data
 - Telegram API
